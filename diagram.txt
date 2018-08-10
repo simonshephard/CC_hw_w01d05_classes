@@ -1,0 +1,107 @@
+
+DIAGRAM KEY:
+CLASS NAME
+Properties
+-name-type
+Methods
+-name - parameters: type, type - returns: type - other action? - test for return and action
+Note
+-include reader method explicitly in methods so that tests cab be specified
+-show OBjECTS in caps so that links are clear
+
+
+ROOM CLASS
+
+Properties:
+DONE-guests - type: array GUESTS
+DONE-songs - type: array SONGS
+DONE-entry_fee - type: integer
+DONE-bar_tab - type: array integers
+DONE-cash - type: integer
+DONE-capacity - type: integer
+
+Methods:
+DONE-init - p: entry_fee, cash, capacity (others empty/zero)
+DONE-guests_reader - p: none - r: array GUESTS - a: none - test correct
+DONE-songs_reader - p: none - r: array SONGS - a: none - test correct
+DONE-entry_fee_reader - p: none - r: integer - a: none - test correct
+DONE-entry_bar_tab_reader - p: none - r: array integers - a: none - test correct
+DONE-entry_cash_reader - p: none - r: integer - a: none - test correct
+DONE-entry_capacity_reader - p: none - r: integer - a: none - test correct
+DONE-check_in_guest - para: GUEST - rets: none - act: adds guest to guests array - test: check added (num or thing)
+DONE---add_feature - check capacity ok before adding - test: check not added if at capacity
+DONE---add_feature - check guest sufficient money before admitting - test: check not added if money less than entry_fee
+DONE---add_feature - take money from guest to room - test: cash increased correctly, guest money reduced correctly (covered by guest reduce money function)
+DONE-check_out_guest - para: GUEST - rets: none - act: removes guest from guest array - test: check removed (num or thing)
+---???add_feature - check guest is in the room first - test: check no change for guest not in room
+DONE-add_song - para: SONG - rets: none - act: adds song to songs array - test: check added (num or thing)
+DONE-remove_song - para: SONG - rets: none - act: removes song from songs array - test: check removed (num or thing)
+
+
+GUEST CLASS
+
+Properties:
+DONE-name - type: string
+DONE-money - type: integer
+DONE-favourite_song - type: SONG
+
+Methods:
+DONE-init - p:name, money, song
+DONE-name_reader - p: none - r: string - a: none - test correct
+DONE-money_reader - p: none - r: integer - a: none - test correct
+DONE-song_reader - p: none - r: string - a: none - test correct
+DONE-reduce_money - para: amount_to_reduce-integer - rets: none - act: reduces money by amount - test: money at correct amount after reducing
+DONE-check_favourite_song - para: ROOM - rets: string "WHOOO!" - act: none - test: returns string when favourite song is in room or not
+
+
+SONG CLASS
+
+Properties
+DONE-name-string
+
+Methods
+DONE-init - p:name
+DONE-name_reader - p: none - r: string - a: none - test for name
+
+
+
+ORIGINAL BRIEF
+
+The OO CodeClan Caraoke (CCC)
+-You have been approached to build software for a Karaoke bar. Specifically, they want you to build a software for checking guests in and out, plus handling songs.
+
+Your program should be test driven and should be able to:
+-Create rooms, songs and guests
+-Check in guests to rooms/Check out guests from rooms
+-Add songs to rooms
+
+Extensions
+-What happens if there are more guests trying to be checked in than there is free space in the room?
+-Karaoke venues usually have an entry fee - So the guests could have money so they can pay it.
+
+Advanced extensions
+-Guests could have a favourite song, and if their favourite song is on the room's playlist, they can cheer loudly! (return a string like "Whoo!")
+-Rooms can keep track of the entry fees/spending of the guests - maybe add a bar tab/bar class?
+-Add anything extra you think would be good to have at a karaoke venue!
+
+
+ADDITIONAL SPEC - SIMULATION MODEL
+
+need delay and clear screen
+
+array of potential song titles
+array of potential moneys
+array of potential names
+
+create room
+
+**loop**
+create guest and songs randomly from the arrays
+try to get in the karaoke room to sing? - not sufficient money / full / enter
+*report
+*delay
+if in then favourite song? - no, then add, yes then woohoo and sing song
+*report
+*delay
+**loop till room songs == potential songs
+*report End
