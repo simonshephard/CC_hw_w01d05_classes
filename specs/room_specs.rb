@@ -7,15 +7,14 @@ require_relative("../room.rb")
 
 class TestRoom < Minitest::Test
 
-  def setup
 
+  def setup
     @song1 = Song.new("The End")
     @guest1 = Guest.new("Guest1", 100, @song1)
     @guest2 = Guest.new("Guest2", 100, @song1)
     @guest3 = Guest.new("Guest3", 100, @song1)
     @guest4 = Guest.new("Guest4", 10, @song1)
     @room1 = Room.new(15, 1000, 2)
-
   end
 
 
@@ -68,12 +67,12 @@ class TestRoom < Minitest::Test
   def test_at_capacity__true
     @room1.check_in_guest(@guest1)
     @room1.check_in_guest(@guest2)
-    assert_equal(true, @room1.at_capacity)
+    assert_equal(true, @room1.at_capacity?)
   end
 
   def test_at_capacity__false
     @room1.check_in_guest(@guest1)
-    assert_equal(false, @room1.at_capacity)
+    assert_equal(false, @room1.at_capacity?)
   end
 
   def test_check_in_guest__at_capacity_no_change
@@ -95,6 +94,23 @@ class TestRoom < Minitest::Test
     @room1.check_in_guest(@guest1)
     assert_equal(room_before + fee, @room1.cash)
     assert_equal(guest_before - fee, @guest1.money)
+  end
+
+  def test_is_guest_by_name__true
+    @room1.check_in_guest(@guest1)
+    assert_equal(true, @room1.is_guest_by_name?(@guest1.name))
+  end
+
+  def test_is_guest_by_name__false
+    assert_equal(false, @room1.is_guest_by_name?(@guest1.name))
+  end
+
+  def test_guest_enough_money__true
+    assert_equal(true, @room1.guest_enough_money?(@guest3))
+  end
+
+  def test_guest_enough_money__false
+    assert_equal(false, @room1.guest_enough_money?(@guest4))
   end
 
 

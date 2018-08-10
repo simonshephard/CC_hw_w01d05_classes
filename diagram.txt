@@ -1,5 +1,7 @@
 
+
 DIAGRAM KEY:
+
 CLASS NAME
 Properties
 -name-type
@@ -33,7 +35,7 @@ DONE---add_feature - check capacity ok before adding - test: check not added if 
 DONE---add_feature - check guest sufficient money before admitting - test: check not added if money less than entry_fee
 DONE---add_feature - take money from guest to room - test: cash increased correctly, guest money reduced correctly (covered by guest reduce money function)
 DONE-check_out_guest - para: GUEST - rets: none - act: removes guest from guest array - test: check removed (num or thing)
----???add_feature - check guest is in the room first - test: check no change for guest not in room
+DONE---add_feature - check guest is in the room first - test: check no change for guest not in room
 DONE-add_song - para: SONG - rets: none - act: adds song to songs array - test: check added (num or thing)
 DONE-remove_song - para: SONG - rets: none - act: removes song from songs array - test: check removed (num or thing)
 
@@ -85,23 +87,4 @@ Advanced extensions
 -Add anything extra you think would be good to have at a karaoke venue!
 
 
-ADDITIONAL SPEC - SIMULATION MODEL
-
-need delay and clear screen
-
-array of potential song titles
-array of potential moneys
-array of potential names
-
-create room
-
-**loop**
-create guest and songs randomly from the arrays
-try to get in the karaoke room to sing? - not sufficient money / full / enter
-*report
-*delay
-if in then favourite song? - no, then add, yes then woohoo and sing song
-*report
-*delay
-**loop till room songs == potential songs
-*report End
+ADDITIONAL SPEC - SIMULATION

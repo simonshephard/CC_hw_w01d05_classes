@@ -4,6 +4,7 @@ require_relative("../guest.rb")
 require_relative("../song.rb")
 require_relative("../room.rb")
 
+
 class TestGuest < Minitest::Test
 
   def setup

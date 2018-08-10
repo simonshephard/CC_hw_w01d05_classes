@@ -13,11 +13,7 @@ class Guest
   end
 
   def room_has_favourite_song(room)
-    if room.songs.include?(@song)
-      return "WhooHoo! They've already got the song!"
-    else
-      return "They don't have the song but they'll add it to the database anyway!"
-    end
+    return "WhooHoo!" if room.songs.include?(@song)
   end
 
 end
