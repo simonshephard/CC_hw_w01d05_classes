@@ -66,6 +66,17 @@ DONE-init - p:name
 DONE-name_reader - p: none - r: string - a: none - test for name
 
 
+SIMULATION CLASS
+
+Properties
+DONE-names, money, songs, entry_fee, start_cash, sleep_time, responses, capacity
+
+Methods
+DONE-init - p:names, money, songs, entry_fee, start_cash, sleep_time, responses, capacity
+DONE-readers - ALL ABOVE
+
+
+
 
 ORIGINAL BRIEF
 
